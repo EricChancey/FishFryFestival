@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Fish Fry Festival 2026 — Freedom Never Tasted So Good</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black:    #111111;
+    --black-2:  #F7F5F0;
+    --black-3:  #EDEAE3;
+    --gold:     #C9922A;
+    --gold-lt:  #E8B84B;
+    --gold-pale:#F5D98A;
+    --white:    #FFFFFF;
+    --off-white:#FDFAF4;
+    --green:    #2E6B35;
+    --green-lt: #3D8A46;
+    --text-dark:#111111;
+    --text-mid: #666666;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--white); color:var(--text-dark); font-family:'DM Sans',sans-serif; overflow-x:hidden; }
+
+  /* NAV */
+  nav {
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:1.1rem 3rem;
+    background:rgba(255,255,255,0.95);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(0,0,0,0.07);
+    box-shadow:0 2px 16px rgba(0,0,0,0.05);
+  }
+  .nav-logo { font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:0.16em; color:var(--black); }
+  .nav-links { display:flex; gap:2rem; list-style:none; }
+  .nav-links a { text-decoration:none; color:var(--text-dark); font-size:0.74rem; letter-spacing:0.13em; text-transform:uppercase; opacity:0.5; transition:opacity .2s,color .2s; }
+  .nav-links a:hover { opacity:1; color:var(--gold); }
+  .nav-cta { background:var(--gold)!important; color:#fff!important; padding:.45rem 1.2rem; opacity:1!important; font-weight:700; }
+  .nav-cta:hover { background:var(--gold-lt)!important; color:var(--black)!important; }
+
+  /* HERO */
+  .hero {
+    min-height:100vh; display:flex; flex-direction:column;
+    align-items:center; justify-content:center; text-align:center;
+    position:relative; padding:8rem 2rem 5rem; overflow:hidden;
+  }
+  .hero-bg {
+    position:absolute; inset:0;
+    background:
+      radial-gradient(ellipse 70% 60% at 50% 40%, rgba(232,184,75,0.18) 0%, transparent 65%),
+      radial-gradient(ellipse 60% 40% at 20% 90%, rgba(61,138,70,0.1) 0%, transparent 55%),
+      radial-gradient(ellipse 60% 40% at 80% 90%, rgba(201,146,42,0.08) 0%, transparent 55%),
+      linear-gradient(180deg, #FFF8ED 0%, #FFFFFF 40%, #F9F5EC 100%);
+  }
+  .hero-grass {
+    position:absolute; bottom:0; left:0; right:0; height:6px;
+    background:linear-gradient(to right,var(--green) 0%,var(--green-lt) 50%,var(--green) 100%);
+  }
+  .sparks { position:absolute; inset:0; pointer-events:none; overflow:hidden; }
+  .spark {
+    position:absolute; bottom:-10px; border-radius:50%;
+    animation:rise linear infinite; opacity:0;
+  }
+  @keyframes rise {
+    0%   { transform:translateY(0) translateX(0) scale(1); opacity:.7; }
+    50%  { opacity:.3; transform:translateY(-38vh) translateX(var(--drift)) scale(.55); }
+    100% { transform:translateY(-75vh) translateX(calc(var(--drift)*1.8)) scale(.04); opacity:0; }
+  }
+  .hero-eyebrow {
+    font-size:.68rem; letter-spacing:.34em; text-transform:uppercase;
+    color:var(--green); margin-bottom:1.8rem; opacity:0;
+    animation:fadeUp .8s .2s forwards;
+  }
+  .hero-title {
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(4.5rem,13vw,13rem);
+    line-height:.86; letter-spacing:.02em; color:var(--black);
+    position:relative; z-index:2; opacity:0; animation:fadeUp .9s .4s forwards;
+  }
+  .hero-title .the {
+    font-size:.32em; letter-spacing:.22em; color:var(--gold);
+    display:block; margin-bottom:.08em;
+    font-family:'Playfair Display',serif; font-style:italic; font-weight:400;
+  }
+  .hero-title .festival {
+    display:block; color:var(--gold);
+    text-shadow:0 4px 30px rgba(201,146,42,.25);
+  }
+  .hero-date-line {
+    font-family:'Playfair Display',serif; font-style:italic;
+    font-size:clamp(1rem,2.4vw,1.55rem);
+    color:var(--text-dark); opacity:0;
+    margin-top:1.3rem; animation:fadeUp .9s .7s forwards;
+  }
+  .hero-tagline {
+    font-size:clamp(.85rem,1.8vw,1.05rem); color:var(--text-mid);
+    margin-top:.6rem; opacity:0; animation:fadeUp .9s .85s forwards;
+    letter-spacing:.02em; max-width:580px; line-height:1.6;
+  }
+  .hero-details {
+    display:flex; gap:2.5rem; margin-top:2.5rem;
+    flex-wrap:wrap; justify-content:center;
+    opacity:0; animation:fadeUp .9s 1.05s forwards;
+  }
+  .hero-detail { text-align:center; }
+  .hero-detail-label { font-size:.58rem; letter-spacing:.28em; text-transform:uppercase; color:var(--gold); display:block; margin-bottom:.25rem; }
+  .hero-detail-value { font-family:'Bebas Neue',sans-serif; font-size:1.25rem; letter-spacing:.08em; color:var(--black); }
+  .divider-line { width:1px; height:34px; background:var(--gold); opacity:.3; align-self:center; }
+  .hero-cta-group {
+    display:flex; gap:1rem; margin-top:2.5rem;
+    flex-wrap:wrap; justify-content:center;
+    opacity:0; animation:fadeUp .9s 1.25s forwards;
+  }
+  .btn-primary {
+    background:var(--gold); color:#fff;
+    padding:1rem 2.5rem; font-family:'DM Sans',sans-serif; font-weight:700;
+    font-size:.77rem; letter-spacing:.16em; text-transform:uppercase;
+    text-decoration:none; transition:background .2s,transform .2s; display:inline-block;
+  }
+  .btn-primary:hover { background:var(--gold-lt); color:var(--black); transform:translateY(-2px); }
+  .btn-outline {
+    border:1px solid rgba(0,0,0,0.2); color:var(--text-dark);
+    padding:1rem 2.5rem; font-family:'DM Sans',sans-serif;
+    font-size:.77rem; letter-spacing:.16em; text-transform:uppercase;
+    text-decoration:none; transition:border-color .2s,color .2s,transform .2s; display:inline-block;
+  }
+  .btn-outline:hover { border-color:var(--gold); color:var(--gold); transform:translateY(-2px); }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(26px)} to{opacity:1;transform:translateY(0)} }
+
+  /* COUNTDOWN */
+  .countdown-bar {
+    background:var(--black-2); border-bottom:1px solid rgba(201,146,42,.1);
+    padding:1.8rem 2rem; display:flex; justify-content:center; gap:3rem; flex-wrap:wrap;
+  }
+  .countdown-unit { text-align:center; }
+  .countdown-number { font-family:'Bebas Neue',sans-serif; font-size:3rem; line-height:1; color:var(--gold-lt); display:block; }
+  .countdown-label { font-size:.58rem; letter-spacing:.22em; text-transform:uppercase; color:var(--text-mid); margin-top:.25rem; }
+  .countdown-sep { font-family:'Bebas Neue',sans-serif; font-size:2.7rem; color:var(--gold); opacity:.2; align-self:flex-start; padding-top:.2rem; }
+
+  /* STATEMENT */
+  .statement { padding:7rem 2rem; max-width:900px; margin:0 auto; text-align:center; position:relative; }
+  .statement::before {
+    content:'"'; position:absolute; top:2rem; left:50%; transform:translateX(-50%);
+    font-family:'Playfair Display',serif; font-size:12rem; color:var(--gold);
+    opacity:.05; line-height:1; pointer-events:none;
+  }
+  .section-label { font-size:.67rem; letter-spacing:.32em; text-transform:uppercase; color:var(--green-lt); margin-bottom:1.5rem; display:block; }
+  .statement-text { font-family:'Playfair Display',serif; font-size:clamp(1.3rem,2.8vw,2rem); line-height:1.65; color:var(--white); }
+  .statement-text em { color:var(--gold-lt); font-style:italic; }
+  .statement-sub { margin-top:2rem; font-size:.97rem; line-height:1.85; color:var(--text-mid); max-width:640px; margin-left:auto; margin-right:auto; }
+
+  /* EXPERIENCE */
+  .experience { background:var(--black-2); padding:6rem 2rem; }
+  .experience-inner { max-width:1100px; margin:0 auto; }
+  .section-header { text-align:center; margin-bottom:4rem; }
+  .section-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(3rem,7vw,6rem); letter-spacing:.04em; color:var(--white); line-height:1; }
+  .section-title span { color:var(--gold); }
+  .experience-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1px; background:rgba(201,146,42,.07); }
+  .exp-card { background:var(--black-2); padding:2.5rem 2rem; position:relative; overflow:hidden; transition:background .3s; }
+  .exp-card::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:linear-gradient(to right,var(--green),var(--gold)); transform:scaleX(0); transform-origin:left; transition:transform .4s; }
+  .exp-card:hover::after { transform:scaleX(1); }
+  .exp-card:hover { background:var(--black-3); }
+  .exp-icon { font-size:2.2rem; margin-bottom:1rem; display:block; }
+  .exp-title { font-family:'Bebas Neue',sans-serif; font-size:1.5rem; letter-spacing:.06em; color:var(--gold-lt); margin-bottom:.6rem; }
+  .exp-desc { font-size:.87rem; line-height:1.75; color:var(--text-mid); }
+
+  /* Experience story rows */
+  .exp-row { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:rgba(0,0,0,0.06); margin-bottom:1px; }
+  .exp-row-reverse { direction:rtl; }
+  .exp-row-reverse > * { direction:ltr; }
+  .exp-story { background:var(--gold); padding:3rem 2.5rem; display:flex; flex-direction:column; justify-content:center; }
+  .exp-story-label { font-family:'Bebas Neue',sans-serif; font-size:.68rem; letter-spacing:.3em; text-transform:uppercase; color:rgba(0,0,0,0.45); margin-bottom:1rem; }
+  .exp-story-text { font-family:'Playfair Display',serif; font-size:1rem; line-height:1.85; color:var(--black); }
+  .exp-cards-col { display:flex; flex-direction:column; gap:1px; background:rgba(0,0,0,0.06); }
+  .exp-card { background:#fff; padding:2.5rem 2rem; position:relative; overflow:hidden; transition:background .3s; flex:1; }
+  .exp-card::after { content:''; position:absolute; bottom:0; left:0; right:0; height:3px; background:linear-gradient(to right,var(--green),var(--gold)); transform:scaleX(0); transform-origin:left; transition:transform .4s; }
+  .exp-card:hover::after { transform:scaleX(1); }
+  .exp-card:hover { background:#fffdf7; }
+  .exp-icon { font-size:2rem; margin-bottom:.8rem; display:block; }
+  .exp-title { font-family:'Bebas Neue',sans-serif; font-size:1.4rem; letter-spacing:.06em; color:var(--text-dark); margin-bottom:.5rem; }
+  .exp-desc { font-size:.85rem; line-height:1.75; color:var(--text-mid); }
+  @media (max-width:768px) { .exp-row { grid-template-columns:1fr; } .exp-row-reverse { direction:ltr; } }
+
+  /* MUSIC */
+  .music-section { padding:7rem 2rem; text-align:center; background:var(--black-2); position:relative; overflow:hidden; }
+  .music-glow { position:absolute; inset:0; background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(201,146,42,.08) 0%,transparent 65%); pointer-events:none; }
+  .dj-grid { display:flex; gap:2.5rem; justify-content:center; margin-top:4rem; flex-wrap:wrap; }
+  .dj-card { border:1px solid rgba(0,0,0,.1); padding:3rem 3rem 2.5rem; text-align:center; position:relative; min-width:260px; background:#fff; transition:border-color .3s,box-shadow .3s; }
+  .dj-card:hover { border-color:var(--gold); box-shadow:0 8px 30px rgba(201,146,42,.12); }
+  .dj-badge { position:absolute; top:-1px; left:50%; transform:translateX(-50%); background:var(--gold); color:#fff; font-size:.57rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; padding:.28rem 1.1rem; white-space:nowrap; }
+  .dj-name { font-family:'Bebas Neue',sans-serif; font-size:2.7rem; letter-spacing:.04em; color:var(--text-dark); margin-bottom:.3rem; }
+  .dj-aka { font-family:'Playfair Display',serif; font-style:italic; font-size:1rem; color:var(--gold); margin-bottom:.6rem; }
+  .dj-cred { font-size:.7rem; letter-spacing:.12em; color:var(--text-mid); text-transform:uppercase; }
+
+  /* TICKETS */
+  .tickets { background:var(--black-3); padding:7rem 2rem; }
+  .tickets-inner { max-width:1000px; margin:0 auto; }
+  .ticket-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1px; margin-top:4rem; background:rgba(0,0,0,.06); }
+  .ticket-card { background:#fff; padding:3rem 2rem; text-align:center; position:relative; transition:transform .3s,box-shadow .3s; }
+  .ticket-card:hover { transform:translateY(-4px); box-shadow:0 12px 30px rgba(0,0,0,.08); }
+  .ticket-card.featured { background:var(--black); }
+  .ticket-tier { font-size:.6rem; letter-spacing:.3em; text-transform:uppercase; color:var(--gold); margin-bottom:1rem; }
+  .ticket-name { font-family:'Bebas Neue',sans-serif; font-size:1.9rem; letter-spacing:.05em; color:var(--text-dark); margin-bottom:1.5rem; }
+  .ticket-card.featured .ticket-name { color:#fff; }
+  .ticket-price { font-family:'Playfair Display',serif; font-size:2.8rem; color:var(--gold); font-weight:700; line-height:1; margin-bottom:.5rem; }
+  .ticket-price sup { font-size:1.3rem; vertical-align:top; margin-top:.5rem; }
+  .ticket-includes { list-style:none; margin:1.5rem 0 2rem; text-align:left; }
+  .ticket-includes li { font-size:.83rem; color:var(--text-mid); padding:.45rem 0 .45rem 1.2rem; border-bottom:1px solid rgba(0,0,0,.06); position:relative; }
+  .ticket-card.featured .ticket-includes li { color:rgba(255,255,255,.6); border-bottom-color:rgba(255,255,255,.08); }
+  .ticket-includes li::before { content:'✓'; position:absolute; left:0; color:var(--green); font-size:.7rem; }
+  .ticket-card.featured .ticket-includes li::before { color:var(--gold); }
+
+  /* DETAILS */
+  .details-section { padding:7rem 2rem; max-width:900px; margin:0 auto; }
+  .details-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; margin-top:3rem; }
+  .detail-group { border-left:2px solid var(--gold); padding-left:1.5rem; }
+  .detail-group-label { font-size:.58rem; letter-spacing:.26em; text-transform:uppercase; color:var(--gold); margin-bottom:.5rem; }
+  .detail-group-value { font-family:'Playfair Display',serif; font-size:1.03rem; color:var(--text-dark); line-height:1.55; }
+  .detail-group-value a { color:var(--gold); text-decoration:none; }
+  .detail-group-value a:hover { color:var(--gold-lt); }
+
+  /* COMMUNITY */
+  .community-section { padding:7rem 2rem; background:var(--black-2); position:relative; overflow:hidden; }
+  .community-section::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:linear-gradient(to right,transparent,var(--gold),transparent); opacity:.15; }
+  .community-section::after { content:''; position:absolute; bottom:0; left:0; right:0; height:1px; background:linear-gradient(to right,transparent,var(--gold),transparent); opacity:.15; }
+  .community-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
+  .community-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(3rem,6vw,5rem); letter-spacing:.03em; color:var(--text-dark); line-height:.95; margin-bottom:2rem; }
+  .community-title span { color:var(--gold); }
+  .community-body { font-size:.92rem; line-height:1.87; color:var(--text-mid); }
+  .community-body strong { color:var(--text-dark); font-weight:600; }
+  .community-body em { color:var(--gold); font-style:italic; }
+  .ladders-card { background:var(--black); border:1px solid rgba(201,146,42,.2); padding:2.5rem; text-align:center; margin-bottom:1.5rem; }
+  .ladders-icon { margin-bottom:1.2rem; }
+  .ladders-label { font-family:'Bebas Neue',sans-serif; font-size:1.75rem; letter-spacing:.06em; color:var(--gold-lt); margin-bottom:.3rem; }
+  .ladders-desc { font-size:.66rem; letter-spacing:.15em; text-transform:uppercase; color:rgba(255,255,255,.4); margin-bottom:2rem; }
+  .ladders-stats { display:flex; justify-content:center; gap:2rem; border-top:1px solid rgba(201,146,42,.15); padding-top:1.5rem; }
+  .lstat { text-align:center; }
+  .lstat-num { display:block; font-family:'Bebas Neue',sans-serif; font-size:2rem; color:var(--gold); line-height:1; }
+  .lstat-label { display:block; font-size:.58rem; letter-spacing:.15em; text-transform:uppercase; color:rgba(255,255,255,.4); margin-top:.3rem; }
+  .partner-logos { text-align:center; }
+  .partner-label { display:block; font-size:.58rem; letter-spacing:.22em; text-transform:uppercase; color:var(--green); margin-bottom:1rem; }
+  .partners { display:flex; flex-wrap:wrap; gap:.6rem; justify-content:center; }
+  .partner-pill { border:1px solid rgba(0,0,0,.12); color:var(--text-mid); font-size:.72rem; letter-spacing:.08em; padding:.4rem 1rem; transition:border-color .2s,color .2s; }
+  .partner-pill:hover { border-color:var(--gold); color:var(--text-dark); }
+
+  /* FAQ */
+  .faq-section { background:#fff; padding:6rem 2rem; }
+  .faq-inner { max-width:760px; margin:0 auto; }
+  .faq-item { border-bottom:1px solid rgba(0,0,0,.07); }
+  .faq-question { width:100%; background:none; border:none; color:var(--text-dark); font-family:'DM Sans',sans-serif; font-size:.93rem; font-weight:500; text-align:left; padding:1.4rem 0; cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:1rem; transition:color .2s; }
+  .faq-question:hover { color:var(--gold); }
+  .faq-arrow { color:var(--gold); font-size:1.2rem; transition:transform .3s; flex-shrink:0; }
+  .faq-item.open .faq-arrow { transform:rotate(45deg); }
+  .faq-answer { font-size:.86rem; line-height:1.85; color:var(--text-mid); max-height:0; overflow:hidden; transition:max-height .4s ease,padding .3s; padding-bottom:0; }
+  .faq-item.open .faq-answer { max-height:300px; padding-bottom:1.5rem; }
+
+  /* JUNETEENTH STRIPE */
+  .juneteenth-stripe { height:6px; background:linear-gradient(to right,#BF2117 33.3%,#111 33.3%,#111 66.6%,var(--green) 66.6%); }
+
+  /* FOOTER */
+  footer { background:var(--black); border-top:none; padding:3rem 2rem; text-align:center; }
+  .footer-logo { font-family:'Bebas Neue',sans-serif; font-size:1.9rem; letter-spacing:.2em; color:var(--gold); margin-bottom:.5rem; }
+  .footer-sub { font-size:.66rem; letter-spacing:.2em; text-transform:uppercase; color:rgba(255,255,255,.35); margin-bottom:2rem; }
+  .footer-links { display:flex; gap:2rem; justify-content:center; flex-wrap:wrap; margin-bottom:2rem; }
+  .footer-links a { font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.4); text-decoration:none; transition:color .2s; }
+  .footer-links a:hover { color:var(--gold-lt); }
+  .footer-copy { font-size:.68rem; color:rgba(255,255,255,.3); }
+  .powered-by { margin-top:.5rem; font-size:.66rem; color:var(--gold); opacity:.45; letter-spacing:.12em; }
+
+  /* REVEAL */
+  .reveal { opacity:0; transform:translateY(34px); transition:opacity .8s,transform .8s; }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+
+  @media (max-width:640px) {
+    nav { padding:1rem 1.5rem; }
+    .nav-links { display:none; }
+    .details-grid { grid-template-columns:1fr; }
+    .community-inner { grid-template-columns:1fr; gap:3rem; }
+    .hero { padding-top:6rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">The Fish Fry Festival</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#music">Music</a></li>
+    <li><a href="#tickets">Tickets</a></li>
+    <li><a href="#community">Community</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#tickets" class="nav-cta">Get Tickets</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grass"></div>
+  <div class="sparks" id="sparks"></div>
+
+  <p class="hero-eyebrow">Randall's Island · New York City · Juneteenth Weekend</p>
+
+  <h1 class="hero-title">
+    <span class="the">The</span>
+    Fish Fry<br>
+    <span class="festival">Festival</span>
+  </h1>
+
+  <p class="hero-date-line">Saturday, June 20th, 2026 &nbsp;·&nbsp; 12PM – 8PM</p>
+  <p class="hero-tagline">All of it is the culture. All of it is welcome. All of it is here.</p>
+
+  <div class="hero-details">
+    <div class="hero-detail">
+      <span class="hero-detail-label">Date</span>
+      <span class="hero-detail-value">Sat, June 20th</span>
+    </div>
+    <div class="divider-line"></div>
+    <div class="hero-detail">
+      <span class="hero-detail-label">Hours</span>
+      <span class="hero-detail-value">12PM – 8PM</span>
+    </div>
+    <div class="divider-line"></div>
+    <div class="hero-detail">
+      <span class="hero-detail-label">Venue</span>
+      <span class="hero-detail-value">Randall's Island</span>
+    </div>
+    <div class="divider-line"></div>
+    <div class="hero-detail">
+      <span class="hero-detail-label">Music By</span>
+      <span class="hero-detail-value">DJ Self & DJ Freedom</span>
+    </div>
+  </div>
+
+  <div class="hero-cta-group">
+    <a href="#tickets" class="btn-primary">Get Your Tickets</a>
+    <a href="#experience" class="btn-outline">See What's Inside</a>
+  </div>
+</section>
+
+<!-- COUNTDOWN -->
+<div class="countdown-bar">
+  <div class="countdown-unit"><span class="countdown-number" id="cd-days">—</span><span class="countdown-label">Days</span></div>
+  <span class="countdown-sep">:</span>
+  <div class="countdown-unit"><span class="countdown-number" id="cd-hours">—</span><span class="countdown-label">Hours</span></div>
+  <span class="countdown-sep">:</span>
+  <div class="countdown-unit"><span class="countdown-number" id="cd-mins">—</span><span class="countdown-label">Minutes</span></div>
+  <span class="countdown-sep">:</span>
+  <div class="countdown-unit"><span class="countdown-number" id="cd-secs">—</span><span class="countdown-label">Seconds</span></div>
+</div>
+
+<!-- JUNETEENTH STRIPE -->
+<div class="juneteenth-stripe"></div>
+
+<!-- STATEMENT -->
+<section class="statement reveal" id="about">
+  <span class="section-label">New York City · Juneteenth Weekend</span>
+  <p class="statement-text">
+    All of it is the culture.<br>
+    All of it is welcome.<br>
+    <em>All of it is here.</em>
+  </p>
+  <p class="statement-sub">
+    You already know what a fish fry means. Somewhere in your life — a backyard, a church parking lot, a block in a city you love — somebody fired up the grease, the music got loud, and everybody who was anybody showed up. That's not just a memory. That's a tradition. And every Juneteenth weekend, we bring it to Randall's Island for the entire culture. What started as a backyard gathering at the KO Chapter, ΩΨΦ house in Harlem has grown into one of New York's most anticipated summer celebrations — drawing over 2,000 people to Randall's Island and counting.
+  </p>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience" id="experience">
+  <div class="experience-inner">
+    <div class="section-header reveal">
+      <span class="section-label">What to Expect</span>
+      <h2 class="section-title">The Full <span>Experience</span></h2>
+    </div>
+
+    <!-- ROW 1: Story + 2 cards -->
+    <div class="exp-row reveal">
+      <div class="exp-story">
+        <div class="exp-story-label">The Turn Up</div>
+        <p class="exp-story-text">The DJs are going to take you through it all. DJ Self of Power 105.1 and DJ Freedom aka Big New York don't miss. The food vendors are going to have you going back for thirds. The waterfront air is going to hit different when you're surrounded by 2,000+ people who all came to the same place for the same reason.</p>
+      </div>
+      <div class="exp-cards-col">
+        <div class="exp-card">
+          <span class="exp-icon">🎵</span>
+          <div class="exp-title">Live DJs All Day</div>
+          <p class="exp-desc">DJ Self of Power 105.1 and DJ Freedom aka Big New York hold it down from noon to close. No lull. No filler. Just the soundtrack your summer deserves.</p>
+        </div>
+        <div class="exp-card">
+          <span class="exp-icon">🍤</span>
+          <div class="exp-title">Legendary Fish</div>
+          <p class="exp-desc">Some of NYC's best food vendors pull up with the real thing. The fish fry tradition elevated — fresh, hot, and worth every bite.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 2: 2 cards + Story -->
+    <div class="exp-row exp-row-reverse reveal">
+      <div class="exp-cards-col">
+        <div class="exp-card">
+          <span class="exp-icon">☀️</span>
+          <div class="exp-title">Premium Day Party Energy</div>
+          <p class="exp-desc">Open air, summer sun, Randall's Island waterfront. The vibe hits from the moment you walk through the gates. Bring your lawn chair, bring your crew.</p>
+        </div>
+        <div class="exp-card">
+          <span class="exp-icon">🛍️</span>
+          <div class="exp-title">Vendor Village</div>
+          <p class="exp-desc">Curated marketplace featuring Black-owned businesses, HBCU merch, art, and more. Shop, discover, and support while you celebrate.</p>
+        </div>
+      </div>
+      <div class="exp-story">
+        <div class="exp-story-label">Welcome to the Yard</div>
+        <p class="exp-story-text">At some point during the day, you're going to see a group of men or women line up on the grass and do something you've probably only seen on a screen — if you've seen it at all. The stepping. The strolling. The call and response that sounds like it's coming from somewhere deep. That's the legacy of the historically Black fraternities and sororities — the Divine Nine — showing up the way they've always shown up. Yard energy. Homecoming energy. If you went to an HBCU you already know. If you didn't, welcome to the yard.</p>
+      </div>
+    </div>
+
+    <!-- ROW 3: Story + 2 cards -->
+    <div class="exp-row reveal">
+      <div class="exp-story">
+        <div class="exp-story-label">All of Us</div>
+        <p class="exp-story-text">You're going to see sisters in every version of themselves — locs out, natural coils, bone straight, waist-length, wigs, weaves, all of it — and every single one of them showing up and showing out. You're going to see brothers dressed for the summer. Families, friend groups, couples, and solo flyers who knew exactly what they were walking into.</p>
+      </div>
+      <div class="exp-cards-col">
+        <div class="exp-card">
+          <span class="exp-icon">🤝</span>
+          <div class="exp-title">The Culture in Full Effect</div>
+          <p class="exp-desc">This is Juneteenth weekend done right. Celebration, connection, community — the whole culture shows up and shows out.</p>
+        </div>
+        <div class="exp-card">
+          <span class="exp-icon">🥂</span>
+          <div class="exp-title">VIP Tent Experience</div>
+          <p class="exp-desc">Reserved tent, premium platters, spirits, and the best view on the island. Ten-deep and ready to celebrate? This is your lane.</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="reveal" style="text-align:center; margin-top:3.5rem; font-family:'Playfair Display',serif; font-style:italic; font-size:1.2rem; color:var(--gold); letter-spacing:.02em;">All of it is the culture. All of it is welcome. All of it is here.</p>
+  </div>
+</section>
+<section class="music-section reveal" id="music">
+  <div class="music-glow"></div>
+  <span class="section-label">On the Ones & Twos</span>
+  <h2 class="section-title">Music <span>By</span></h2>
+  <div class="dj-grid">
+    <div class="dj-card">
+      <div class="dj-badge">Headliner</div>
+      <div class="dj-name">DJ Self</div>
+      <div class="dj-aka">The People's DJ</div>
+      <div class="dj-cred">Power 105.1 FM · New York City</div>
+    </div>
+    <div class="dj-card">
+      <div class="dj-badge">Co-Headliner</div>
+      <div class="dj-name">DJ Freedom</div>
+      <div class="dj-aka">Big New York</div>
+      <div class="dj-cred">New York's Own · The Culture's DJ</div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKETS -->
+<section class="tickets reveal" id="tickets">
+  <div class="tickets-inner">
+    <div class="section-header">
+      <span class="section-label">Secure Your Spot</span>
+      <h2 class="section-title">Get Your <span>Tickets</span></h2>
+      <p style="margin-top:1rem;color:var(--text-mid);font-size:.86rem;">Over 2,000 people showed up last year. Don't wait.</p>
+    </div>
+    <div class="ticket-grid">
+      <div class="ticket-card">
+        <div class="ticket-tier">General Admission</div>
+        <div class="ticket-name">GA Entry</div>
+        <div class="ticket-price"><sup>$</sup>25</div>
+        <ul class="ticket-includes">
+          <li>Full event access</li>
+          <li>All music & entertainment</li>
+          <li>Vendor village access</li>
+          <li>Open air Randall's Island</li>
+        </ul>
+        <a href="#" class="btn-primary" style="width:100%;text-align:center;display:block;">Get Tickets</a>
+      </div>
+      <div class="ticket-card featured">
+        <div class="ticket-tier">Most Popular</div>
+        <div class="ticket-name">GA + Seafood Platter</div>
+        <div class="ticket-price"><sup>$</sup>40</div>
+        <ul class="ticket-includes">
+          <li>Full event access</li>
+          <li>Seafood platter included</li>
+          <li>Skip the food line</li>
+          <li>All entertainment access</li>
+        </ul>
+        <a href="#" class="btn-primary" style="width:100%;text-align:center;display:block;">Get Tickets</a>
+      </div>
+      <div class="ticket-card">
+        <div class="ticket-tier">Premium</div>
+        <div class="ticket-name">VIP "Tent Owt"</div>
+        <div class="ticket-price"><sup>$</sup>1,000</div>
+        <p style="font-size:.75rem;color:var(--gold);letter-spacing:.08em;margin-bottom:1.2rem;font-weight:600;">Just $100 per person — all inclusive</p>
+        <ul class="ticket-includes">
+          <li>Entry for 10 guests</li>
+          <li>Private tent with table & comfortable seating</li>
+          <li>Choice of tent location</li>
+          <li>Full or half fish & chicken platter for 10</li>
+          <li>Multiple sides included</li>
+          <li>One premium bottle of liquor</li>
+          <li>Bottled waters for the group</li>
+        </ul>
+        <a href="#" class="btn-primary" style="width:100%;text-align:center;display:block;">Get VIP Package</a>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:2rem;font-size:.76rem;color:var(--text-mid);letter-spacing:.1em;">On-site parking available for $25 · Purchase with your ticket</p>
+  </div>
+</section>
+
+<!-- DETAILS -->
+<section class="details-section reveal">
+  <div class="section-header" style="text-align:center;margin-bottom:3rem;">
+    <span class="section-label">Know Before You Go</span>
+    <h2 class="section-title" style="font-size:clamp(2.5rem,5vw,4rem);">Event <span>Details</span></h2>
+  </div>
+  <div class="details-grid">
+    <div class="detail-group">
+      <div class="detail-group-label">Location</div>
+      <div class="detail-group-value">Randall's Island<br>20 Randalls Island Park, New York NY 10035</div>
+    </div>
+    <div class="detail-group">
+      <div class="detail-group-label">Date & Time</div>
+      <div class="detail-group-value">Saturday, June 20, 2026<br>12PM – 8PM · Juneteenth Weekend</div>
+    </div>
+    <div class="detail-group">
+      <div class="detail-group-label">Parking</div>
+      <div class="detail-group-value">On-site parking available<br>$25 per vehicle — purchase in advance</div>
+    </div>
+    <div class="detail-group">
+      <div class="detail-group-label">What to Bring</div>
+      <div class="detail-group-value">Lawn chair, sunscreen,<br>good vibes, and your crew</div>
+    </div>
+    <div class="detail-group">
+      <div class="detail-group-label">Vendors</div>
+      <div class="detail-group-value">Interested in setting up?<br><a href="mailto:info@fishfryfestival.com">Apply to be a vendor →</a></div>
+    </div>
+    <div class="detail-group">
+      <div class="detail-group-label">Presented By</div>
+      <div class="detail-group-value">Eric Michael Events<br>in partnership with KO Chapter, ΩΨΦ</div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY -->
+<section class="community-section reveal" id="community">
+  <div class="community-inner">
+    <div class="community-left">
+      <span class="section-label">Beyond the Party</span>
+      <h2 class="community-title">Community<br><span>Service</span></h2>
+      <p class="community-body">The Fish Fry Festival is a celebration — and a contribution. A portion of every ticket sold goes directly toward supporting the communities that have always shown up for us.</p>
+      <p class="community-body" style="margin-top:1rem;">In partnership with <strong>Engage Reform</strong>, <strong>KIPP NYC Charter Schools</strong>, and the <strong>Kappa Omicron Chapter of Omega Psi Phi Fraternity, Inc.</strong>, proceeds from this event fund The Ladders Program — a 6-week Algebra Regents sprint designed to help NYC high school students cross the threshold to graduation.</p>
+      <p class="community-body" style="margin-top:1rem;"><em>Every student climbing deserves someone holding the ladder.</em></p>
+    </div>
+    <div class="community-right">
+      <div class="ladders-card">
+        <div class="ladders-icon">
+          <svg viewBox="0 0 60 100" width="44" height="74" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="0" width="6" height="100" rx="3" fill="#fff" opacity=".9"/>
+            <rect x="50" y="0" width="6" height="100" rx="3" fill="#fff" opacity=".9"/>
+            <rect x="4" y="16" width="52" height="5" rx="2.5" fill="#E8B84B"/>
+            <rect x="4" y="38" width="52" height="5" rx="2.5" fill="#E8B84B"/>
+            <rect x="4" y="60" width="52" height="5" rx="2.5" fill="#E8B84B"/>
+            <rect x="4" y="82" width="52" height="5" rx="2.5" fill="#E8B84B"/>
+          </svg>
+        </div>
+        <div class="ladders-label">The Ladders Program</div>
+        <div class="ladders-desc">6-Week Algebra Regents Sprint · KIPP NYC</div>
+        <div class="ladders-stats">
+          <div class="lstat"><span class="lstat-num">6</span><span class="lstat-label">Weeks</span></div>
+          <div class="lstat"><span class="lstat-num">65+</span><span class="lstat-label">Score Goal</span></div>
+          <div class="lstat"><span class="lstat-num">2,000+</span><span class="lstat-label">Students</span></div>
+        </div>
+      </div>
+      <div class="partner-logos">
+        <span class="partner-label">In Partnership With</span>
+        <div class="partners">
+          <div class="partner-pill">Engage Reform</div>
+          <div class="partner-pill">KIPP NYC Charter Schools</div>
+          <div class="partner-pill">KO Chapter · ΩΨΦ</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section reveal" id="faq">
+  <div class="faq-inner">
+    <div class="section-header" style="text-align:center;margin-bottom:3rem;">
+      <span class="section-label">Questions</span>
+      <h2 class="section-title" style="font-size:clamp(2.5rem,5vw,4rem);">FAQ</h2>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">Where do I buy tickets? <span class="faq-arrow">+</span></button>
+      <div class="faq-answer">Tickets are available right here on this page via the Get Tickets button. We recommend purchasing early — the event has sold out in previous years.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">What's included with general admission? <span class="faq-arrow">+</span></button>
+      <div class="faq-answer">Full entry into the festival — all music, entertainment, and the vendor village. Food and beverages are available for purchase separately unless you've added a seafood platter to your ticket.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">What is the VIP "Tent Owt" package? <span class="faq-arrow">+</span></button>
+      <div class="faq-answer">Just $100 per person all-in. Entry for 10 guests, a private tent with table and comfortable seating in a location of your choice, a full or half fish & chicken platter for the group, multiple sides, one premium bottle of liquor, and bottled waters. Perfect for birthday groups, reunions, or anyone who wants to go all the way in.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">Is parking available? <span class="faq-arrow">+</span></button>
+      <div class="faq-answer">Yes — on-site parking at Randall's Island is $25 per vehicle, added when purchasing tickets. Buy in advance — spaces are limited.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">What should I bring? <span class="faq-arrow">+</span></button>
+      <div class="faq-answer">A lawn chair, sunscreen (it's Juneteenth weekend — the sun is out), your crew, and good vibes. Leave the bad energy at home.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">How do I become a vendor? <span class="faq-arrow">+</span></button>
+      <div class="faq-answer">Email info@fishfryfestival.com with your business name, what you're selling, and your social handle. We prioritize Black-owned businesses and culturally aligned brands.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">What is the Fish Fry Festival's history? <span class="faq-arrow">+</span></button>
+      <div class="faq-answer">The Fish Fry Festival grew from a backyard gathering at the KO Chapter, ΩΨΦ house in Harlem into a full-scale cultural celebration now drawing over 2,000 people to Randall's Island — and growing every year. Produced by Eric Michael Events in partnership with the Kappa Omicron Chapter of Omega Psi Phi Fraternity, Inc.</div>
+    </div>
+  </div>
+</section>
+
+<!-- JUNETEENTH STRIPE -->
+<div class="juneteenth-stripe"></div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">The Fish Fry Festival</div>
+  <div class="footer-sub">Randall's Island, NYC · Saturday June 20th, 2026 · 12PM–8PM</div>
+  <div class="footer-links">
+    <a href="#about">About</a>
+    <a href="#tickets">Tickets</a>
+    <a href="#community">Community</a>
+    <a href="#faq">FAQ</a>
+    <a href="mailto:info@fishfryfestival.com">Contact</a>
+    <a href="#">Instagram</a>
+  </div>
+  <p style="font-family:'Playfair Display',serif; font-style:italic; font-size:.95rem; color:var(--gold); opacity:.6; margin-bottom:1.5rem; letter-spacing:.02em;">All of it is the culture. All of it is welcome. All of it is here.</p>
+  <div class="footer-copy">© 2026 The Fish Fry Festival. All rights reserved.</div>
+  <div class="powered-by">A Eric Michael Events Production</div>
+</footer>
+
+<script>
+  // Oil shimmer sparks
+  const sparksEl = document.getElementById('sparks');
+  for (let i = 0; i < 35; i++) {
+    const s = document.createElement('div');
+    s.className = 'spark';
+    s.style.left = Math.random() * 100 + '%';
+    s.style.setProperty('--drift', (Math.random() * 100 - 50) + 'px');
+    s.style.animationDuration = (Math.random() * 5 + 4) + 's';
+    s.style.animationDelay = (Math.random() * 6) + 's';
+    const size = (Math.random() * 3 + 1) + 'px';
+    s.style.width = s.style.height = size;
+    const colors = ['#E8B84B','#C9922A','#F5D98A','#ffffff88','#3D8A46'];
+    s.style.background = colors[Math.floor(Math.random() * colors.length)];
+    sparksEl.appendChild(s);
+  }
+
+  // Countdown
+  const eventDate = new Date('2026-06-20T12:00:00');
+  function updateCountdown() {
+    const diff = eventDate - new Date();
+    if (diff <= 0) {
+      ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(id => document.getElementById(id).textContent = '00');
+      return;
+    }
+    const pad = n => String(n).padStart(2,'0');
+    document.getElementById('cd-days').textContent  = pad(Math.floor(diff/86400000));
+    document.getElementById('cd-hours').textContent = pad(Math.floor((diff%86400000)/3600000));
+    document.getElementById('cd-mins').textContent  = pad(Math.floor((diff%3600000)/60000));
+    document.getElementById('cd-secs').textContent  = pad(Math.floor((diff%60000)/1000));
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // Scroll reveal
+  const observer = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.1 }
+  );
+  document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
+
+  // FAQ
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+</script>
+</body>
+</html>
